@@ -29,5 +29,19 @@
             //Assert
             $this->assertEquals("no match", $result);
         }
+        function test_AnagramTest_cat()
+        {
+            //Arrange
+            $test_AnagramTest = new Anagram;
+            $input = "cat";
+            $second_input = "act";
+
+            //Act
+            $result = $test_AnagramTest->checkWord($input, $second_input);
+
+            //Assert
+            $this->assertEquals("act", $result);
+        }
+
     }
  ?>
