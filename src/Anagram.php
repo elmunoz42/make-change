@@ -18,7 +18,6 @@
             sort($match_array);
             $search_result_type="not integer";
             foreach($match_array as $letter){
-
                 $search_result = array_search($letter, $word_array);
                 $search_result_type = gettype($search_result);
                 if($search_result_type=="integer"){
@@ -28,8 +27,15 @@
             if ($search_result_type!="integer"){
                 $success_string = "no match";
             }
+            elseif (count($success_results)<count($match_array)) {
+                $success_string = "no match";
+            }
+            elseif (count($match_array)>count($word_array)) {
+                $success_string = "no match";
+            }
             else {
-                $success_string = implode("", $success_results);
+                // $success_string = implode("", $success_results);
+                $success_string = $new_word_to_match;
             }
 
 
