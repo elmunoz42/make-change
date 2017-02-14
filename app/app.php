@@ -23,7 +23,9 @@
     });
 
     $app->get('/output', function() use ($app) {
-        $my_word = new Anagram($_GET['word']);
+
+        $my_word = new Anagram($_GET['word'], $_GET['word_to_match']);
+        $my_word->checkWord($_GET['word'], $_GET['word_to_match']);
         // $my_word->save();
         return $app['twig']->render('output.html.twig', array( 'word' => $my_word ) );
     });
