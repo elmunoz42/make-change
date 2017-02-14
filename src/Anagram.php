@@ -16,19 +16,24 @@
             $match_array=str_split($new_word_to_match);
             sort($word_array);
             sort($match_array);
-            $word_string=implode(" ",$word_array);
-            $match_string=implode(" ",$match_array);
+            $search_result_type="not integer";
+            foreach($match_array as $letter){
 
-            // if ($new_word == $new_word_to_match) {
-            //     array_push($success_results, $new_word_to_match);
-            // }
-            if ($word_string===$match_string) {
-                array_push($success_results, $new_word_to_match);
+                $search_result = array_search($letter, $word_array);
+                $search_result_type = gettype($search_result);
+                if($search_result_type=="integer"){
+                    array_push($success_results, $letter);
+                }
+            }
+            if ($search_result_type!="integer"){
+                $success_string = "no match";
             }
             else {
-                array_push($success_results, "no match");
+                $success_string = implode("", $success_results);
             }
-            return $success_results[0];
+
+
+            return $success_string;
         }
 
         function save()

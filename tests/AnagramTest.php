@@ -42,6 +42,19 @@
             //Assert
             $this->assertEquals("act", $result);
         }
+        function test_AnagramTest_at()
+        {
+            //Arrange
+            $test_AnagramTest = new Anagram;
+            $input = "cat";
+            $second_input = "at";
+
+            //Act
+            $result = $test_AnagramTest->checkWord($input, $second_input);
+
+            //Assert
+            $this->assertEquals("at", $result);
+        }
 
     }
  ?>
