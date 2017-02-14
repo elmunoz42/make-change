@@ -16,5 +16,18 @@
             //Assert
             $this->assertEquals("z", $result);
         }
+        function test_AnagramTest_fail()
+        {
+            //Arrange
+            $test_AnagramTest = new Anagram;
+            $input = "z";
+            $second_input = "a";
+
+            //Act
+            $result = $test_AnagramTest->checkWord($input, $second_input);
+
+            //Assert
+            $this->assertEquals("no match", $result);
+        }
     }
  ?>
