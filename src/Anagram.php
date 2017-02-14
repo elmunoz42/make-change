@@ -3,13 +3,6 @@
     {
         public $word;
         public $word_to_match;
-        public $success_results = array();
-
-        function __construct($word, $word_to_match)
-        {
-            $this->word = $word;
-            $this->word_to_match = $word_to_match;
-        }
 
         function getWord()
         {
@@ -18,10 +11,14 @@
 
         function checkWord($new_word, $new_word_to_match )
         {
+            $success_results=array();
             if ($new_word == $new_word_to_match) {
-                array_push($this->success_results, $new_word);
+                array_push($success_results, $new_word);
             }
-            return $this->success_results;
+            else {
+                array_push($success_results, "no match");
+            }
+            return $success_results[0];
         }
 
         function save()

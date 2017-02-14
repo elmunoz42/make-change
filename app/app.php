@@ -12,22 +12,16 @@
 
     $app['debug'] = true;
 
-    // session_start();
-    //
-    // if (empty($_SESSION['word'])) {
-    //     $_SESSION['word']= array();
-    // };
-
     $app->get('/', function() use ($app) {
         return $app['twig']->render('anagram_input.html.twig');
     });
 
     $app->get('/output', function() use ($app) {
-
-        $my_word = new Anagram($_GET['word'], $_GET['word_to_match']);
-        $my_word->checkWord($_GET['word'], $_GET['word_to_match']);
-        // $my_word->save();
-        return $app['twig']->render('output.html.twig', array( 'word' => $my_word ) );
+        $anagram = new Anagram;
+        $user_word = $_GET['word'];
+        $word_to_match = $_GET['word_to_match'];
+        $success = $anagram->checkWord($user_word, $word_to_match);
+        return $app['twig']->render('output.html.twig', array( 'success_word' => $success, 'user_word' => $user_word, 'word_to_match' => $word_to_match ) );
     });
 
     return $app;
